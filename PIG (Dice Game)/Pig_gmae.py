@@ -25,9 +25,13 @@ def dice_roll(score):
 def splayer():
     pscore=0
     cscore=0
-    while True:
+    while True:    
+        os.system("cls")
+        pscore+= dice_roll(pscore)
+        print(pscore)
+        os.system("pause")
+        break
         
-        dice_roll(pscore)
 
 
 
@@ -42,7 +46,7 @@ def main():
         
         opt=input("Enter Here:").lower()
         if opt=="1":
-            
+
             print("\nRULES")
             print("You can roll the Dice till you get a one")
             print("You can add all the score except 1")
@@ -50,11 +54,13 @@ def main():
             print("the score will be added otherwise")
             print("all the score will be lost\n")
             os.system("pause")
+            splayer()
+
+
 
         elif opt=="2":
             pass
         elif opt=="e":
-
             print("GoodBye")
             break
         else:
