@@ -3,13 +3,12 @@ import os
 
 def dice_roll(score):
     sc=0
-    while True:
-        
+    while True:     
+        if score+sc >=50:
+            return sc   
         print("Press 1 to roll the dice")
         print("Press 2 to Stop")
         opt=input("Enter Here:")
-        if score+sc >=50:
-            return sc
         
 
         if opt=="1":
@@ -24,8 +23,8 @@ def dice_roll(score):
             print("Invalid Input")
 
 def cdice_roll(score,n):
-    i=0
     sc=0
+    i=0
     while i<n:
         i+=1
         if score+sc >=50:
@@ -46,15 +45,24 @@ def splayer():
         pscore+= dice_roll(pscore)
         print("Player-Score:"+str(pscore))
         os.system("pause")
-        roll=random.randint(1,6)
-        cscore+=cdice_roll(cscore,roll)
-        print("Comp-Score:"+str(cscore))
-        os.system("pause")
+        os.system("cls")
+        
+        if pscore<50:
+            roll=random.randint(1,6)
+            cscore+=cdice_roll(cscore,roll)
+            print("System rolls: "+ str(roll)+" timse")
+            print("Comp-Score:"+str(cscore))
+            os.system("pause")
+            os.system("cls")
+
         if pscore>=50:
             print("Player Wins")
+            os.system("pause")
             break
         elif cscore>=50:
+            
             print("Comp Wins")
+            os.system("pause")
             break
 
         
