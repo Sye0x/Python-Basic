@@ -3,7 +3,9 @@ import os
 
 def dice_roll(score):
     sc=0
-    while True:     
+    while True:    
+        os.system("cls")
+         
         if score+sc >=50:
             return sc   
         print("Press 1 to roll the dice")
@@ -66,7 +68,31 @@ def splayer():
             break
 
         
-         
+def pvp():
+    player1=0
+    player2=0
+    while True:
+        os.system("cls")
+        print("Player 1 Turn")
+        player1+=dice_roll(player1)
+        if player1>=50:
+            print("Player1 Wins")
+            os.system("pause")
+            break
+        print("Player1-Score:"+str(player1))
+        os.system("pause")
+        os.system("cls")
+        print("Player 2 Turn")
+        player2+=dice_roll(player1)
+        if player2>=50:
+            print("Player2 Wins")
+            os.system("pause")
+            break
+        print("Player2-Score:"+str(player2))
+        os.system("pause")
+        os.system("cls")
+        
+
 
 
 
@@ -92,7 +118,7 @@ def main():
             splayer()
 
         elif opt=="2":
-            pass
+            pvp()
         elif opt=="e":
             print("GoodBye")
             break
