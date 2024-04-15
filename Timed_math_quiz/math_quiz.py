@@ -1,3 +1,4 @@
+import time
 import random
 import os
 
@@ -15,15 +16,16 @@ def cal(num1, num2, opt):
 
 def generate_question(level):
     if level == 1:
-        return random.randint(0, 16), random.randint(0, 16), random.choice(["+", "-", "*", "/"])
+        return random.randint(0, 16), random.randint(1, 16), random.choice(["+", "-", "*", "/"])
     elif level == 2:
-        return random.randint(0, 128), random.randint(0, 128), random.choice(["+", "-", "*", "/"])
+        return random.randint(0, 128), random.randint(1, 128), random.choice(["+", "-", "*", "/"])
     elif level == 3:
-        return random.randint(0, 256), random.randint(0, 256), random.choice(["+", "-", "*", "/"])
+        return random.randint(0, 256), random.randint(1, 256), random.choice(["+", "-", "*", "/"])
 
 def play_level(level):
     i = 0
     correct_answers = 0
+    start = time.time()  # Measure the start time for the level
     while i < 10:
         os.system("clear")  # for Unix-based systems, use "cls" for Windows
         i += 1
@@ -40,8 +42,11 @@ def play_level(level):
         except ValueError:
             print("Invalid input. Please enter a number.")
         input("Press Enter to continue...")
-    os.system("CLS")
+    end = time.time()  # Measure the end time for the level
+    res = int(end - start)  # Calculate the duration of the level
+    os.system("clear")
     print(f"Number of Correct Answers: {correct_answers}")
+    print("It took you " + str(res) + " Seconds")
 
 while True:
     os.system("clear")
