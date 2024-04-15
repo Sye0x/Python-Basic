@@ -10,8 +10,6 @@ def cal(num1, num2, opt):
     elif opt == "*":
         return num1 * num2
     elif opt == "/":
-        if num2 == 0:
-            return "Undefined"
         return num1 / num2
 
 def generate_question(level):
@@ -53,9 +51,15 @@ while True:
     print("Press 1 for Level 1")
     print("Press 2 for Level 2")
     print("Press 3 for Level 3")
-    level_choice = int(input("Enter Here:"))
-    if 1 <= level_choice <= 3:
-        play_level(level_choice)
+    level_choice = input("Enter Here:")
+    
+    if level_choice.isdigit():
+        level_choice=int(level_choice)
+        if 1 <= level_choice <= 3:
+            play_level(level_choice)
+        else:
+            print("Invalid input. Please enter a number shown.")
+            input("Press Enter to continue...")
     else:
         print("Invalid input. Please enter a number shown.")
     input("Press Enter to continue...")
